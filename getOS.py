@@ -130,7 +130,11 @@ def main():
             config=config,
             ignore_mismatched_sizes=args.ignore_mismatched_sizes,
         )
-        
+    
+    if (args.i is not None) and (args.f is not None):    
+        print("Please input a formula (using --i) or give the csv file with some formulas (using --f)")
+        return 
+    
     if args.i is not None:
         print("Input formula -------> ", args.i)
         comp = Composition(args.i)        
