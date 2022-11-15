@@ -5,4 +5,4 @@ python train_BERTOS.py  \
        --per_device_train_batch_size 256 \
        --learning_rate 1e-3  \
        --num_train_epochs 500    \
-       --output_dir ./icsd
+       --output_dir ./output_icsd
