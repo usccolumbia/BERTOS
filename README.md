@@ -67,9 +67,12 @@ Run `getOS.py` file to get predicted oxidation states for a input formula or inp
 Using your model:
 ```
 python getOS.py --i SrTiO3 --model_name_or_path ./model_icsdcn
+python getOS.py --f formulas.csv --model_name_or_path ./model_icsdcn
+
 ```
 Using pretrained model:
 ```
+python getOS.py --i SrTiO3 --model_name_or_path ./trained_models/ICSD_CN
 python getOS.py --f formulas.csv --model_name_or_path ./trained_models/ICSD_CN
 ```
 
