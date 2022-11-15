@@ -28,7 +28,7 @@ conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11
 pip install -r requirements.txt
 ```  
 ## Datasets  
-Our training process is carried out on our [BERTOS datasets](https://figshare.com/articles/dataset/BERTOS_dataset/21554817). After downloading and extracting the data under `dataset` folder, you will find the following four folders `ICSD`, `ICSD_CN`, `ICSD_CN_oxide`, and `ICSD_oxide`.
+Our training process is carried out on our BERTOS datasets. After extracting the data under `datasets` folder, you will get the following four folders `ICSD`, `ICSD_CN`, `ICSD_CN_oxide`, and `ICSD_oxide`.
 
 ## Usage
 ### A Quick Run
