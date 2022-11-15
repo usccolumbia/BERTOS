@@ -95,6 +95,12 @@ def parse_args():
         default='./tokenizer',
         help="Pretrained tokenizer name or path if not the same as model_name",
     )
+    parser.add_argument(
+        "--ignore_mismatched_sizes",
+        action="store_true",
+        default=True,
+        help="ignore_mismatched_sizes set to True by default.",
+    )
     
     parser.add_argument(
         "--pad_to_max_length",
@@ -114,7 +120,7 @@ def main():
     padding = "max_length" if args.pad_to_max_length else False
     
     # Load model config
-    config = AutoConfig.from_pretrained(args.model_name_or_path, num_labels=14)
+    config = AutoConfig.from_pretrained(args.model_name_or_path, num_labels=15)
    
     # Load model
     model = AutoModelForTokenClassification.from_pretrained(
