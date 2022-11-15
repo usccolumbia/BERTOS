@@ -95,6 +95,7 @@ def parse_args():
         default='./tokenizer',
         help="Pretrained tokenizer name or path if not the same as model_name",
     )
+
     parser.add_argument(
         "--ignore_mismatched_sizes",
         action="store_true",
@@ -112,7 +113,7 @@ def parse_args():
     
 def main():
     args = parse_args()
-    
+
     # Load tokenizer
     tokenizer_name_or_path = args.tokenizer_name
     tokenizer = BertTokenizerFast.from_pretrained(tokenizer_name_or_path, do_lower_case=False)
@@ -163,10 +164,13 @@ def main():
         for i, ele in enumerate(tmp):
             outstr += ele
             true_os = true_pred[i].item() - 5
+            if true_os>0:
+                true_os='+'+str(true_os)
             prob = true_probs[i].item()
-            outstr = outstr + '(' + str(true_os) + '  ' + str(prob) + ') '
+            #outstr = outstr + '(' + str(true_os) + '  ' + str(prob) + ') '
+            outstr = outstr +f'({true_os}  {prob:.2f})'
          
-        print("Get Oxidation State: ", outstr)
+        print("Predicted Oxidation States:\n ", outstr)
     
     if args.f is not None:
         print("Input file ------->", args.f)
@@ -203,16 +207,22 @@ def main():
             for i, ele in enumerate(tmp):
                 outstr += ele
                 true_os = true_pred[i].item() - 5
+                if true_os>0:
+                    true_os='+'+str(true_os)
                 prob = true_probs[i].item()
-                outstr = outstr + '(' + str(true_os) + '  ' + str(prob) + ') '
+                #outstr = outstr + '(' + str(true_os) + '  ' + str(prob) + ') '
+                outstr = outstr +f'({true_os}  {prob:.2f})'
              
-            #print("Get Oxidation State: ", outstr)
+            # print("Get Oxidation State: ", outstr)
             
             all_outs.append(outstr)
-            
-            out_df = pd.DataFrame(all_outs)
-            out_df.to_csv('predictedOS.csv', header=None, index=None)
-    
+
+        out_df = pd.DataFrame(all_outs)
+        #add _OS to the input filename as output file
+        outfile='.'.join(args.f.split(".")[0:-1])+"_OS."+args.f.split(".")[-1]
+
+        out_df.to_csv(outfile, header=None, index=None)
+        print("Output file ------>",f"check {outfile} for the predicted oxidation states")
 
     
         
