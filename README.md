@@ -23,10 +23,16 @@ conda create -n bertos
 conda activate bertos
 conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
 ```
+if you only has CPU on your computer, try this:
+```
+pip install transformers[torch]
+```
+
 2. Other packagess
 ```
 pip install -r requirements.txt
 ```  
+
 ## Datasets  
 Our training process is carried out on our BERTOS datasets. After extracting the data under `datasets` folder, you will get the following four folders `ICSD`, `ICSD_CN`, `ICSD_CN_oxide`, and `ICSD_oxide`.
 
