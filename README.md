@@ -2,15 +2,15 @@
 BERTOS: transformer for oxidation state prediction
 
 ## Table of Contents
--[Installations](##Installations)
+- [Installations](##installations)
 
--[Datasets](##Datasets)
+- [Datasets](##datasets)
 
--[Usage](##Usage)
+- [Usage](##usage)
 
--[Pretrained Models](##Pretrained-Models)
+- [Pretrained Models](##pretrained-models)
 
--[Acknowledgement](##Acknowledgement)
+- [Acknowledgement](##acknowledgement)
 
 ## Installations
 1. PyTorch 
@@ -34,5 +34,5 @@ Our training process is carried out on our [BERTOS_datasets](https://figshare.co
 ### Training
 `python train_BERTOS.py  --config_name ./random_config/  --dataset_name materials_icsd.py   --max_length 100  --per_device_train_batch_size 256  --learning_rate 1e-3  --num_train_epochs 500    --output_dir ./icsd`
 
-## Pretrained-Models
+## Pretrained Models
 Our trained models can be downloaded from [BERTOS_models](https://figshare.com/account/projects/153468/articles/21554823), and you can use it as a test or predict model.
