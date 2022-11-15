@@ -55,7 +55,7 @@ python getOS.py --f formulas.csv
 ```
 
 ## Pretrained Models
-Our trained models can be downloaded from [BERTOS models](https://figshare.com/articles/online_resource/BERTOS_model/21554823), and you can use it as a test or prediction model.
+Our trained models can be downloaded from figshare [BERTOS models](https://figshare.com/articles/online_resource/BERTOS_model/21554823), and you can use it as a test or prediction model.
 
 ## Acknowledgement
 We use the transformer model as implmented in Huggingface.
