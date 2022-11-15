@@ -24,7 +24,7 @@ conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11
 pip install -r requirements.txt
 ```  
 ## Datasets  
-Our training process is carried out on our [BERTOS_datasets](https://figshare.com/account/projects/153468/articles/21554817). After downloading and extracting the data under `dataset` folder, you will find the following three folders `ICSD`, `ICSD_CN`, `ICSD_CN_oxide`, and `ICSD_oxide`.
+Our training process is carried out on our [BERTOS datasets](https://figshare.com/account/projects/153468/articles/21554817). After downloading and extracting the data under `dataset` folder, you will find the following three folders `ICSD`, `ICSD_CN`, `ICSD_CN_oxide`, and `ICSD_oxide`.
 
 ## Usage
 ### A Quick Run
@@ -40,14 +40,14 @@ python train_BERTOS.py  --config_name $CONFIG NAME$  --dataset_name $DATASET FIL
  If you want to change the dataset, you can use different dataset file, like `materials_icsd.py`, `materials_icsdcn.py`, `materials_icsdcno.py`, and `materials_icsdo.py`. And you can also follow the intructions of [huggingface]() to build you own custom dataset.
 
 ### Predict
-Run `getOS.py` file to get predicted oxidation states for input formulas or input csv file containing multiple formula.
+Run `getOS.py` file to get predicted oxidation states for input formulas or input csv file containing multiple formulas.
 ```
 python getOS.py --i $FORMULAS$
 python getOS.py --f $FORMULAS CSV FILE$
 ```
 
 ## Pretrained Models
-Our trained models can be downloaded from [BERTOS_models](https://figshare.com/account/projects/153468/articles/21554823), and you can use it as a test or predict model.
+Our trained models can be downloaded from [BERTOS models](https://figshare.com/account/projects/153468/articles/21554823), and you can use it as a test or predict model.
 
 
 
