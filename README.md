@@ -2,10 +2,14 @@
 BERTOS: transformer for oxidation state prediction
 
 ## Table of Contents
--[Installations](##Installations）
+-[Installations](##Installations)
+
 -[Datasets](##Datasets)
+
 -[Usage](##Usage)
+
 -[Pretrained Models](##Pretrained-Models)
+
 -[Acknowledgement](##Acknowledgement)
 
 ## Installations
