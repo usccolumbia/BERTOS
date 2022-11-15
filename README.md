@@ -6,15 +6,15 @@ Department of computer science and Engineering <br>
 University of South Carolina
 
 ## Table of Contents
-- [Installations](##installations)
+- [Installations](##Installations)
 
-- [Datasets](##datasets)
+- [Datasets](##Datasets)
 
-- [Usage](##usage)
+- [Usage](##Usage)
 
-- [Pretrained Models](##pretrained-models)
+- [Pretrained Models](##Pretrained-models)
 
-- [Acknowledgement](##acknowledgement)
+- [Acknowledgement](##Acknowledgement)
 
 ## Installations
 1. PyTorch 
