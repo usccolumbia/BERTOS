@@ -19,7 +19,16 @@ conda create -n bertos
 conda activate bertos
 conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
 ```
-2. Other packagess
+2. Transformers
+Using `pip`
+```
+pip install transformers
+```
+or installing from source
+```
+pip install git+https://github.com/huggingface/transformers
+```
+3. Other packagess
 ```
 pip install -r requirements.txt
 ```  
