@@ -36,5 +36,14 @@ An example is to train a BERTOS model on the ICSD dataset.
 `python train_BERTOS.py  --config_name ./random_config/  --dataset_name materials_icsd.py   --max_length 100  --per_device_train_batch_size 256  --learning_rate 1e-3  --num_train_epochs 500    --output_dir ./icsd`
 
  If you want to change the dataset, you can change different dataset file, like `materials_icsdcn.py`, `materials_icsdcno.py`, and `materials_icsdo.py`. And you can also follow the intructions of [huggingface]() to build you own customized datase.
+ 
 ## Pretrained Models
 Our trained models can be downloaded from [BERTOS_models](https://figshare.com/account/projects/153468/articles/21554823), and you can use it as a test or predict model.
+
+## Acknowledgement
+`@article{wolf2019huggingface,
+  title={Huggingface's transformers: State-of-the-art natural language processing},
+  author={Wolf, Thomas and Debut, Lysandre and Sanh, Victor and Chaumond, Julien and Delangue, Clement and Moi, Anthony and Cistac, Pierric and Rault, Tim and Louf, R{\'e}mi and Funtowicz, Morgan and others},
+  journal={arXiv preprint arXiv:1910.03771},
+  year={2019}
+}`
