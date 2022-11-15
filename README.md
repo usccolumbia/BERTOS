@@ -86,4 +86,4 @@ materials using deep learning. 2022.
 ```
 
 # Contact
-If you have any problem using ProteinLM, feel free to contact via [funihang@gmail.com](mailto:funihang@gmail.com).
+If you have any problem using BERTOS, feel free to contact via [funihang@gmail.com](mailto:funihang@gmail.com).
