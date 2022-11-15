@@ -222,7 +222,8 @@ def main():
         outfile='.'.join(args.f.split(".")[0:-1])+"_OS."+args.f.split(".")[-1]
 
         out_df.to_csv(outfile, header=None, index=None)
-        print("Output file ------>",f"check {outfile} for the predicted oxidation states")
+        print("Output file ------>",f"{outfile} <-- check for the predicted oxidation states")
+
 
     
         
