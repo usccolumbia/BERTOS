@@ -41,9 +41,13 @@ An example is to train a BERTOS model on the ICSD dataset.
 Our trained models can be downloaded from [BERTOS_models](https://figshare.com/account/projects/153468/articles/21554823), and you can use it as a test or predict model.
 
 ## Acknowledgement
-`@article{wolf2019huggingface,
+@article{wolf2019huggingface,
+
   title={Huggingface's transformers: State-of-the-art natural language processing},
+  
   author={Wolf, Thomas and Debut, Lysandre and Sanh, Victor and Chaumond, Julien and Delangue, Clement and Moi, Anthony and Cistac, Pierric and Rault, Tim and Louf, R{\'e}mi and Funtowicz, Morgan and others},
+  
   journal={arXiv preprint arXiv:1910.03771},
+  
   year={2019}
-}`
+}
