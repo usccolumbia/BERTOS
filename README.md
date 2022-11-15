@@ -1,8 +1,8 @@
 # BERTOS
 BERTOS: transformer language model for oxidation state prediction
 
-Machine Learning and Evolution Laboratory\\
-Department of computer science and Engineering\\
+Machine Learning and Evolution Laboratory <br>
+Department of computer science and Engineering <br>
 University of South Carolina
 
 ## Table of Contents
