@@ -40,14 +40,14 @@ python train_BERTOS.py  --config_name $CONFIG NAME$  --dataset_name $DATASET FIL
  If you want to change the dataset, you can use different dataset file, like `materials_icsd.py`, `materials_icsdcn.py`, `materials_icsdcno.py`, and `materials_icsdo.py`. And you can also follow the intructions of [huggingface]() to build you own custom dataset.
 
 ### Predict
-Run `getOS.py` file to get predicted oxidation states for input formulas or input csv file containing multiple formulas.
+Run `getOS.py` file to get predicted oxidation states for a input formula or input formulas.csv file containing multiple formulas.
 ```
-python getOS.py --i $FORMULAS$
-python getOS.py --f $FORMULAS CSV FILE$
+python getOS.py --i Your_formula(e.g. SrTiO3)
+python getOS.py --f formulas.csv
 ```
 
 ## Pretrained Models
-Our trained models can be downloaded from [BERTOS models](https://figshare.com/account/projects/153468/articles/21554823), and you can use it as a test or predict model.
+Our trained models can be downloaded from [BERTOS models](https://figshare.com/account/projects/153468/articles/21554823), and you can use it as a test or prediction model.
 
 
 
