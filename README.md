@@ -14,6 +14,8 @@ University of South Carolina
 
 - [Pretrained Models](#Pretrained-models)
 
+- [Performance](#Performance)
+
 - [Acknowledgement](#Acknowledgement)
 
 ## Installations
@@ -66,6 +68,11 @@ python getOS.py --f formulas.csv --model_name_or_path ./trained_models/ICSD_CN
 
 ## Pretrained Models
 Our trained models can be downloaded from figshare [BERTOS models](https://figshare.com/articles/online_resource/BERTOS_model/21554823), and you can use it as a test or prediction model.
+
+
+## Performance
+
+
 
 ## Acknowledgement
 We use the transformer model as implmented in Huggingface.
