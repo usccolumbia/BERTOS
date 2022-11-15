@@ -21,7 +21,7 @@ conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11
 ```
 2. Other packagess
 ```
-pip install -r requirements.txt`
+pip install -r requirements.txt
 ```
 
 ## Datasets
@@ -29,8 +29,9 @@ Our training process is carried out on our [BERTOS_datasets](https://figshare.co
 
 ## Usage
 ### A Quick Run
-`bash train_BERTOS.sh`
-
+'''
+bash train_BERTOS.sh
+'''
 ### Training
 An example is to train a BERTOS model on the ICSD dataset.
 `python train_BERTOS.py  --config_name ./random_config/  --dataset_name materials_icsd.py   --max_length 100  --per_device_train_batch_size 256  --learning_rate 1e-3  --num_train_epochs 500    --output_dir ./icsd`
@@ -41,13 +42,11 @@ An example is to train a BERTOS model on the ICSD dataset.
 Our trained models can be downloaded from [BERTOS_models](https://figshare.com/account/projects/153468/articles/21554823), and you can use it as a test or predict model.
 
 ## Acknowledgement
-@article{wolf2019huggingface,
-
-  title={Huggingface's transformers: State-of-the-art natural language processing},
-  
-  author={Wolf, Thomas and Debut, Lysandre and Sanh, Victor and Chaumond, Julien and Delangue, Clement and Moi, Anthony and Cistac, Pierric and Rault, Tim and Louf, R{\'e}mi and Funtowicz, Morgan and others},
-  
-  journal={arXiv preprint arXiv:1910.03771},
-  
-  year={2019}
+'''
+@article{wolf2019huggingface,  
+  title={Huggingface's transformers: State-of-the-art natural language processing},  
+  author={Wolf, Thomas and Debut, Lysandre and Sanh, Victor and Chaumond, Julien and Delangue, Clement and Moi, Anthony and Cistac, Pierric and Rault, Tim and Louf, R{\'e}mi and Funtowicz, Morgan and others},  
+  journal={arXiv preprint arXiv:1910.03771},  
+  year={2019}  
 }
+'''
