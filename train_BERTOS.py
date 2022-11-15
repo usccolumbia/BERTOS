@@ -128,7 +128,7 @@ def parse_args():
     parser.add_argument(
         "--tokenizer_name",
         type=str,
-        default=None,
+        default='./tokenizer',
         help="Pretrained tokenizer name or path if not the same as model_name",
     )
     parser.add_argument(
