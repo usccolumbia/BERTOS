@@ -51,7 +51,7 @@ python train_BERTOS.py  --config_name ./random_config   --dataset_name ./dataset
 Run `getOS.py` file to get predicted oxidation states for a input formula or input formulas.csv file containing multiple formulas.
 ```
 python getOS.py --i Your_formula(e.g. SrTiO3)
-python getOS.py --f formulas.csv
+python getOS.py --f formulas.csv --model_name_or_path ./trained_models/icsdcn
 ```
 
 ## Pretrained Models
