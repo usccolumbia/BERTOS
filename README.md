@@ -54,7 +54,7 @@ python train_BERTOS.py  --config_name ./random_config   --dataset_name materials
  If you want to change the dataset, you can use different dataset file to replace `$DATASET LOADER$`, like `materials_icsd.py`, `materials_icsdcn.py`, `materials_icsdcno.py`, and `materials_icsdo.py`. And you can also follow the intructions of [huggingface]() to build you own custom dataset.
 
 ### Predict
-Run `getOS.py` file to get predicted oxidation states for a input formula or input formulas.csv file containing multiple formulas.
+Run `getOS.py` file to get predicted oxidation states for a input formula or input formulas.csv file containing multiple formulas. <br>
 Using your model:
 ```
 python getOS.py --i Your_formula(e.g. SrTiO3) --model_name_or_path ./model_icsdcn
