@@ -28,7 +28,7 @@ conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11
 pip install -r requirements.txt
 ```  
 ## Datasets  
-Our training process is carried out on our [BERTOS datasets](https://figshare.com/account/projects/153468/articles/21554817). After downloading and extracting the data under `dataset` folder, you will find the following three folders `ICSD`, `ICSD_CN`, `ICSD_CN_oxide`, and `ICSD_oxide`.
+Our training process is carried out on our [BERTOS datasets](https://figshare.com/articles/dataset/BERTOS_dataset/21554817). After downloading and extracting the data under `dataset` folder, you will find the following three folders `ICSD`, `ICSD_CN`, `ICSD_CN_oxide`, and `ICSD_oxide`.
 
 ## Usage
 ### A Quick Run
@@ -51,9 +51,7 @@ python getOS.py --f formulas.csv
 ```
 
 ## Pretrained Models
-Our trained models can be downloaded from [BERTOS models](https://figshare.com/account/projects/153468/articles/21554823), and you can use it as a test or prediction model.
-
-
+Our trained models can be downloaded from [BERTOS models](https://figshare.com/articles/online_resource/BERTOS_model/21554823), and you can use it as a test or prediction model.
 
 ## Acknowledgement
 We use the transformer model as implmented in Huggingface.
