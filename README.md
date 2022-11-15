@@ -41,7 +41,7 @@ An example is to train a BERTOS model on the ICSD dataset.
 ```
 python train_BERTOS.py  --config_name $CONFIG NAME$  --dataset_name $DATASET FILE$   --max_length $MAX LENGTH$  --per_device_train_batch_size $BATCH SIZE$  --learning_rate $LEARNING RATE$  --num_train_epochs $EPOCHS$    --output_dir $OUTPUT DIRECTORY$
 ```
- If you want to change the dataset, you can use different dataset file, like `materials_icsd.py`, `materials_icsdcn.py`, `materials_icsdcno.py`, and `materials_icsdo.py`. And you can also follow the intructions of [huggingface]() to build you own custom dataset.
+ If you want to change the dataset, you can use different dataset file to replace $DATASET FILE$, like `materials_icsd.py`, `materials_icsdcn.py`, `materials_icsdcno.py`, and `materials_icsdo.py`. And you can also follow the intructions of [huggingface]() to build you own custom dataset.
 
 ### Predict
 Run `getOS.py` file to get predicted oxidation states for a input formula or input formulas.csv file containing multiple formulas.
