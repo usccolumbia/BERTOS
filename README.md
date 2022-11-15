@@ -25,10 +25,11 @@ conda create -n bertos
 conda activate bertos
 conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
 ```
-if you only has CPU on your computer, try this:
+If you only has CPU on your computer, try this:
 ```
 pip install transformers[torch]
 ```
+If you are using Mac M1 chip computer, following [this tutorial](https://jamescalam.medium.com/hugging-face-and-sentence-transformers-on-m1-macs-4b12e40c21ce) or [this one](https://towardsdatascience.com/hugging-face-transformers-on-apple-m1-26f0705874d7) to install pytorch and transformers.
 
 2. Other packagess
 ```
