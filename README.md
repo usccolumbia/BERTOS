@@ -32,7 +32,7 @@ Our training process is carried out on our [BERTOS datasets](https://figshare.co
 
 ## Usage
 ### A Quick Run
-Quickly run the script to train a BERTOS.
+Quickly run the script to train a BERTOS using the OS-ICSD training set and save the model into the ./output_icsd folder.
 ```
 bash train_BERTOS.sh
 ```  
