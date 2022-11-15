@@ -72,7 +72,7 @@ Our trained models can be downloaded from figshare [BERTOS models](https://figsh
 
 ## Performance
 
-
+![Performance](img/performance.png)
 
 ## Acknowledgement
 We use the transformer model as implmented in Huggingface.
