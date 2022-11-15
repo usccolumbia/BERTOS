@@ -38,7 +38,7 @@ Our training process is carried out on our BERTOS datasets. After extracting the
 
 ## Usage
 ### A Quick Run
-Quickly run the script to train a BERTOS using the OS-ICSD-CN training set and save the model into the `./output_icsdcn` folder.
+Quickly run the script to train a BERTOS using the OS-ICSD-CN training set and save the model into the `./model_icsdcn` folder.
 ```
 bash train_BERTOS.sh
 ```  
