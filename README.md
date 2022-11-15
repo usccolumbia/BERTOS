@@ -84,3 +84,6 @@ Nihang Fu,†,§ Jeffrey Hu,†,§ Ying Feng,‡ Hanno zur Loye,¶ and Jianjun H
 materials using deep learning. 2022.
 
 ```
+
+# Contact
+If you have any problem using ProteinLM, feel free to contact via [funihang@gmail.com](mailto:funihang@gmail.com).
