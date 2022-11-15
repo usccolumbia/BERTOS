@@ -28,15 +28,16 @@ Our training process is carried out on our [BERTOS_datasets](https://figshare.co
 
 ## Usage
 ### A Quick Run
+Quickly run the script to train a BERTOS.
 ```
 bash train_BERTOS.sh
 ```  
 ### Training
 An example is to train a BERTOS model on the ICSD dataset.  
 ```
-python train_BERTOS.py  --config_name ./random_config/  --dataset_name materials_icsd.py   --max_length 100  --per_device_train_batch_size 256  --learning_rate 1e-3  --num_train_epochs 500    --output_dir ./icsd
+python train_BERTOS.py  --config_name $CONFIG NAME$  --dataset_name $DATASET FILE$   --max_length $MAX LENGTH$  --per_device_train_batch_size $BATCH SIZE$  --learning_rate $LEARNING RATE$  --num_train_epochs $EPOCHS$    --output_dir $OUTPUT DIRECTORY$
 ```
- If you want to change the dataset, you can change different dataset file, like `materials_icsdcn.py`, `materials_icsdcno.py`, and `materials_icsdo.py`. And you can also follow the intructions of [huggingface]() to build you own customized datase.
+ If you want to change the dataset, you can use different dataset file, like `materials_icsd.py`, `materials_icsdcn.py`, `materials_icsdcno.py`, and `materials_icsdo.py`. And you can also follow the intructions of [huggingface]() to build you own custom dataset.
  
 ## Pretrained Models
 Our trained models can be downloaded from [BERTOS_models](https://figshare.com/account/projects/153468/articles/21554823), and you can use it as a test or predict model.
