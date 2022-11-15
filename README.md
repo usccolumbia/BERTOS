@@ -19,11 +19,17 @@ University of South Carolina
 - [Acknowledgement](#Acknowledgement)
 
 ## Installations
-1. PyTorch 
+
+0. Set up virtual environment
 ```
 conda create -n bertos
 conda activate bertos
+```
+
+1. PyTorch and transformers for computers with Nvidia GPU.
+```
 conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
+conda install -c conda-forge transformers
 ```
 If you only has CPU on your computer, try this:
 ```
