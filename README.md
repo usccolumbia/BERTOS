@@ -25,7 +25,7 @@ pip install -r requirements.txt
 ```
 
 ## Datasets
-Our training process is carried out on our [BERTOS_datasets](https://figshare.com/account/projects/153468/articles/21554817). After downloading and extracting the data under `dataset` folder, you will find the following three folders `ICSD`, 'ICSD_CN', `ICSD_CN_oxide`, and `ICSD_oxide`.
+Our training process is carried out on our [BERTOS_datasets](https://figshare.com/account/projects/153468/articles/21554817). After downloading and extracting the data under `dataset` folder, you will find the following three folders `ICSD`, `ICSD_CN`, `ICSD_CN_oxide`, and `ICSD_oxide`.
 
 ## Usage
 ### A Quick Run
