@@ -1,5 +1,9 @@
 # BERTOS
-BERTOS: transformer for oxidation state prediction
+BERTOS: transformer language model for oxidation state prediction
+
+Machine Learning and Evolution Laboratory\\
+Department of computer science and Engineering\\
+University of South Carolina
 
 ## Table of Contents
 - [Installations](##installations)
@@ -19,16 +23,7 @@ conda create -n bertos
 conda activate bertos
 conda install pytorch==1.8.0 torchvision==0.9.0 torchaudio==0.8.0 cudatoolkit=11.1 -c pytorch -c conda-forge
 ```
-2. Transformers
-Using `pip`
-```
-pip install transformers
-```
-or installing from source
-```
-pip install git+https://github.com/huggingface/transformers
-```
-3. Other packagess
+2. Other packagess
 ```
 pip install -r requirements.txt
 ```  
@@ -61,6 +56,7 @@ Our trained models can be downloaded from [BERTOS models](https://figshare.com/a
 
 
 ## Acknowledgement
+We use the transformer model as implmented in Huggingface.
 ```
 @article{wolf2019huggingface,  
   title={Huggingface's transformers: State-of-the-art natural language processing},  
@@ -68,4 +64,11 @@ Our trained models can be downloaded from [BERTOS models](https://figshare.com/a
   journal={arXiv preprint arXiv:1910.03771},  
   year={2019}  
 }
+```
+
+## Cite our work
+```
+Nihang Fu,†,§ Jeffrey Hu,†,§ Ying Feng,‡ Hanno zur Loye,¶ and Jianjun Hu, Composition based oxidation state prediction of
+materials using deep learning. 2022.
+
 ```
