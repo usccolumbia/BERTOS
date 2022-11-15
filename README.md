@@ -45,18 +45,18 @@ bash train_BERTOS.sh
 ### Training
 The command to to train a BERTOS model.  
 ```
-python train_BERTOS.py  --config_name $CONFIG NAME$  --dataset_name $DATASET LOADER$   --max_length $MAX LENGTH$  --per_device_train_batch_size $BATCH SIZE$  --learning_rate $LEARNING RATE$  --num_train_epochs $EPOCHS$    --output_dir $OUTPUT DIRECTORY$
+python train_BERTOS.py  --config_name $CONFIG_NAME$  --dataset_name $DATASET_LOADER$   --max_length $MAX_LENGTH$  --per_device_train_batch_size $BATCH_ SIZE$  --learning_rate $LEARNING_RATE$  --num_train_epochs $EPOCHS$    --output_dir $MODEL_OUTPUT_DIRECTORY$
 ```
 We use `ICSD_CN` dataset as an example:
 ```
-python train_BERTOS.py  --config_name ./random_config   --dataset_name materials_icsd_cn.py   --max_length 100  --per_device_train_batch_size 256  --learning_rate 1e-3  --num_train_epochs 500    --output_dir ./output_icsdcn
+python train_BERTOS.py  --config_name ./random_config   --dataset_name materials_icsd_cn.py   --max_length 100  --per_device_train_batch_size 256  --learning_rate 1e-3  --num_train_epochs 500    --output_dir ./model_icsdcn
 ```
  If you want to change the dataset, you can use different dataset file to replace `$DATASET LOADER$`, like `materials_icsd.py`, `materials_icsdcn.py`, `materials_icsdcno.py`, and `materials_icsdo.py`. And you can also follow the intructions of [huggingface]() to build you own custom dataset.
 
 ### Predict
 Run `getOS.py` file to get predicted oxidation states for a input formula or input formulas.csv file containing multiple formulas.
 ```
-python getOS.py --i Your_formula(e.g. SrTiO3)
+python getOS.py --i Your_formula(e.g. SrTiO3) --model_name_or_path ./model_icsdcn
 python getOS.py --f formulas.csv --model_name_or_path ./trained_models/ICSD_CN
 ```
 
