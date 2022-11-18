@@ -84,7 +84,7 @@ def parse_args():
     parser.add_argument(
         "--model_name_or_path",
         type=str,
-        default='./trained_model/icsdcn/',
+        default='./trained_models/ICSD_CN/',
         help="Path to pretrained model or model identifier from huggingface.co/models.",
         required=False,
     )
