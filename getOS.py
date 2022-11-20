@@ -215,7 +215,7 @@ def main():
                     true_os='+'+str(true_os)
                 prob = true_probs[i].item()
                 #outstr = outstr + '(' + str(true_os) + '  ' + str(prob) + ') '
-                outstr = outstr +f'({true_os}  {prob:.2f})'
+                outstr = outstr +f'({true_os}:{prob:.2f}) '
              
             # print("Get Oxidation State: ", outstr)
             
