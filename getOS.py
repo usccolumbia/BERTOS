@@ -50,6 +50,23 @@ import torch.nn.functional as F
 
 import pandas as pd
 
+def merge_os(osstr):
+    #Sr(+2:1.00) Ti(+4:1.00) O(-2:1.00) O(-2:1.00) O(-2:1.00)
+    items = osstr.split(" ")
+    elementos={}
+    for x in items:
+        if x in elementos:
+            elementos[x]+=1
+        else:
+            elementos[x]=1
+    out=''
+    for x in elementos:
+        if elementos[x]==1:
+            out+=x+" "
+        else:
+            e=x.split('(')[0]
+            out+=f'{e}{elementos[x]}({"".join(x.split("(")[1:])} '
+    return out.strip()
 
 #import pymatgen
 
@@ -172,8 +189,8 @@ def main():
                 true_os='+'+str(true_os)
             prob = true_probs[i].item()
             #outstr = outstr + '(' + str(true_os) + '  ' + str(prob) + ') '
-            outstr = outstr +f'({true_os}  {prob:.2f})'
-         
+            outstr = outstr +f'({true_os}:{prob:.2f}) '
+        outstr=merge_os(outstr) 
         print("Predicted Oxidation States:\n ", outstr)
     
     if args.f is not None:
@@ -216,7 +233,7 @@ def main():
                 prob = true_probs[i].item()
                 #outstr = outstr + '(' + str(true_os) + '  ' + str(prob) + ') '
                 outstr = outstr +f'({true_os}:{prob:.2f}) '
-             
+            outstr=merge_os(outstr)  
             # print("Get Oxidation State: ", outstr)
             
             all_outs.append(outstr)
