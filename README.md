@@ -84,7 +84,7 @@ Our trained models can be downloaded from figshare [BERTOS models](https://figsh
 
 ## Performance
 
-![Performance](performance.jpg)
+![Performance](performances.png)
 Removing `OS`, the datasets under `datasets` folder correspond to the datasets in the figure.
 
 ## Acknowledgement
