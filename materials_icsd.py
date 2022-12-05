@@ -27,7 +27,7 @@ _CITATION = """
 _DESCRIPTION = """
 """
 
-_ROOT = "./datasets/ICSD/"
+_ROOT = "/work/nihang/token_classification_ft_occupancy/datasets/ICSD/"
 _TRAINING_FILE = "train.txt"
 _DEV_FILE = "validation.txt"
 _TEST_FILE = "test.txt"
@@ -66,7 +66,6 @@ class Materials(datasets.GeneratorBasedBuilder):
                                 "6",
                                 "7",
                                 "8",
-                                "9",
                             ]
                         )
                     ),
