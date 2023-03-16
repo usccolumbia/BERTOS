@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# coding=utf-8
 # Copyright 2021 The HuggingFace Inc. team. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,11 +36,8 @@ from accelerate.logging import get_logger
 from accelerate.utils import set_seed
 from huggingface_hub import Repository
 from transformers import (
-    CONFIG_MAPPING,
-    MODEL_MAPPING,
     AutoConfig,
     AutoModelForTokenClassification,
-    AutoTokenizer,
     DataCollatorForTokenClassification,
     PretrainedConfig,
     SchedulerType,
@@ -60,10 +55,6 @@ check_min_version("4.23.0.dev0")
 logger = get_logger(__name__)
 require_version("datasets>=1.8.0", "To fix: pip install -r examples/pytorch/token-classification/requirements.txt")
 
-# You should update this to your particular problem to have better documentation of `model_type`
-MODEL_CONFIG_CLASSES = list(MODEL_MAPPING.keys())
-MODEL_TYPES = tuple(conf.model_type for conf in MODEL_CONFIG_CLASSES)
-
 
 def parse_args():
     parser = argparse.ArgumentParser(
@@ -74,18 +65,6 @@ def parse_args():
         type=str,
         default=None,
         help="The name of the dataset to use (via the datasets library).",
-    )
-    parser.add_argument(
-        "--dataset_config_name",
-        type=str,
-        default=None,
-        help="The configuration name of the dataset to use (via the datasets library).",
-    )
-    parser.add_argument(
-        "--train_file", type=str, default=None, help="A csv or a json file containing the training data."
-    )
-    parser.add_argument(
-        "--validation_file", type=str, default=None, help="A csv or a json file containing the validation data."
     )
     parser.add_argument(
         "--text_column_name",
@@ -176,13 +155,6 @@ def parse_args():
     parser.add_argument("--output_dir", type=str, default=None, help="Where to store the final model.")
     parser.add_argument("--seed", type=int, default=None, help="A seed for reproducible training.")
     parser.add_argument(
-        "--model_type",
-        type=str,
-        default=None,
-        help="Model type to use if training from scratch.",
-        choices=MODEL_TYPES,
-    )
-    parser.add_argument(
         "--label_all_tokens",
         action="store_true",
         help="Setting labels of all special tokens to -100 and thus PyTorch will ignore them.",
@@ -244,16 +216,6 @@ def parse_args():
     args = parser.parse_args()
 
     # Sanity checks
-    if args.task_name is None and args.train_file is None and args.validation_file is None:
-        raise ValueError("Need either a task name or a training/validation file.")
-    else:
-        if args.train_file is not None:
-            extension = args.train_file.split(".")[-1]
-            assert extension in ["csv", "json"], "`train_file` should be a csv or a json file."
-        if args.validation_file is not None:
-            extension = args.validation_file.split(".")[-1]
-            assert extension in ["csv", "json"], "`validation_file` should be a csv or a json file."
-
     if args.push_to_hub:
         assert args.output_dir is not None, "Need an `output_dir` to create a repo when `--push_to_hub` is passed."
 
@@ -309,26 +271,15 @@ def main():
             os.makedirs(args.output_dir, exist_ok=True)
     accelerator.wait_for_everyone()
 
-    # Get the datasets: you can either provide your own CSV/JSON/TXT training and evaluation files (see below)
-    # or just provide the name of one of the public datasets for token classification task available on the hub at https://huggingface.co/datasets/
-    # (the dataset will be downloaded automatically from the datasets Hub).
-    #
-    # For CSV/JSON files, this script will use the column called 'tokens' or the first column if no column called
-    # 'tokens' is found. You can easily tweak this behavior (see below).
-    #
-    # In distributed training, the load_dataset function guarantee that only one local process can concurrently
-    # download the dataset.
-    if args.dataset_name is not None:
-        # Downloading and loading a dataset from the hub.
-        raw_datasets = load_dataset(args.dataset_name, args.dataset_config_name)
-    else:
-        data_files = {}
-        if args.train_file is not None:
-            data_files["train"] = args.train_file
-        if args.validation_file is not None:
-            data_files["validation"] = args.validation_file
-        extension = args.train_file.split(".")[-1]
-        raw_datasets = load_dataset(extension, data_files=data_files)
+
+    ## load dataset
+    if not args.dataset_name:
+        raise ValueError(
+            "Please give dataset file"
+        )
+        
+    raw_datasets = load_dataset(args.dataset_name)
+
     # Trim a number of training examples
     if args.debug:
         for split in raw_datasets.keys():
@@ -380,45 +331,21 @@ def main():
     num_labels = len(label_list)
 
     # Load pretrained model and tokenizer
-    #
-    # In distributed training, the .from_pretrained methods guarantee that only one local process can concurrently
-    # download model & vocab.
-    if args.config_name:
-        config = AutoConfig.from_pretrained(args.config_name, num_labels=num_labels)
-    elif args.model_name_or_path:
-        config = AutoConfig.from_pretrained(args.model_name_or_path, num_labels=num_labels)
-    else:
-        config = CONFIG_MAPPING[args.model_type]()
-        logger.warning("You are instantiating a new config instance from scratch.")
-
+    ##prepare config file (BERT)
+    config = AutoConfig.from_pretrained(args.config_name, num_labels=num_labels)
+    
+    ##load tokenizer
     tokenizer_name_or_path = args.tokenizer_name
-
     if not tokenizer_name_or_path:
         raise ValueError(
             "You are instantiating a new tokenizer from scratch. This is not supported by this script."
             "You can do it from another script, save it, and load it from here, using --tokenizer_name."
         )
 
-    '''
-    if config.model_type in {"bloom", "gpt2", "roberta"}:
-        tokenizer = AutoTokenizer.from_pretrained(tokenizer_name_or_path, use_fast=True, add_prefix_space=True)
-    else:
-        tokenizer = AutoTokenizer.from_pretrained(tokenizer_name_or_path, use_fast=True)
-    '''
-    
-    
     tokenizer = BertTokenizerFast.from_pretrained(tokenizer_name_or_path, do_lower_case=False)
     
-    if args.model_name_or_path:
-        model = AutoModelForTokenClassification.from_pretrained(
-            args.model_name_or_path,
-            from_tf=bool(".ckpt" in args.model_name_or_path),
-            config=config,
-            ignore_mismatched_sizes=args.ignore_mismatched_sizes,
-        )
-    else:
-        logger.info("Training new model from scratch")
-        model = AutoModelForTokenClassification.from_config(config)
+    logger.info("Training new model from scratch")
+    model = AutoModelForTokenClassification.from_config(config)
 
     model.resize_token_embeddings(len(tokenizer))
 
@@ -445,13 +372,7 @@ def main():
 
     # Map that sends B-Xxx label to its I-Xxx counterpart
     b_to_i_label = []
-    '''
-    for idx, label in enumerate(label_list):
-        if label.startswith("B-") and label.replace("B-", "I-") in label_list:
-            b_to_i_label.append(label_list.index(label.replace("B-", "I-")))
-        else:
-            b_to_i_label.append(idx)
-    '''
+
     # Preprocessing the datasets.
     # First we tokenize all the texts.
     padding = "max_length" if args.pad_to_max_length else False
@@ -772,11 +693,7 @@ def main():
             if args.push_to_hub:
                 repo.push_to_hub(commit_message="End of training", auto_lfs_prune=True)
 
-        #with open(os.path.join(args.output_dir, "all_results.json"), "w") as f:
-        #    json.dump(
-        #        {"eval_accuracy": eval_metric["accuracy"], "train_loss": total_loss.item() / len(train_dataloader)}, f
-        #    )
-        
+
         with open(os.path.join(args.output_dir, "all_results.json"), "w") as f:
             json.dump(
                 {"eval_accuracy": eval_metric["accuracy"]}, f

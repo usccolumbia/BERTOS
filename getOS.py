@@ -1,45 +1,20 @@
-# python getOS.py  --i SO2
-# python getOS.py  --f formulas.csv
+# for a formula: python getOS.py  --i SO2
+# for a csv file conatining multiple formulas: python getOS.py  --f formulas.csv
 
 import argparse
 import json
 import logging
-import math
 import os
-import random
-from pathlib import Path
-
-import datasets
 import torch
-from datasets import ClassLabel, load_dataset
-from torch.utils.data import DataLoader
-from tqdm.auto import tqdm
 
-import evaluate
 import transformers
-from accelerate import Accelerator
-from accelerate.logging import get_logger
-from accelerate.utils import set_seed
-from huggingface_hub import Repository
 from transformers import (
-    CONFIG_MAPPING,
-    MODEL_MAPPING,
     AutoConfig,
     AutoModelForTokenClassification,
-    AutoTokenizer,
-    DataCollatorForTokenClassification,
-    PretrainedConfig,
-    SchedulerType,
-    default_data_collator,
-    get_scheduler,
 )
-from transformers.utils import check_min_version, get_full_repo_name, send_example_telemetry
-from transformers.utils.versions import require_version
-
 from transformers import BertTokenizerFast
 
 import numpy as np
-
 
 from pymatgen.io.cif import CifParser
 from pymatgen.core.composition import Composition
@@ -156,29 +131,23 @@ def main():
         print("Input formula -------> ", args.i)
         comp = Composition(args.i)        
         comp_dict = comp.to_reduced_dict
-        #print(comp_dict)
-        
+
         input_seq = ""
         for ele in comp_dict.keys():
             for count in range(int(comp_dict[ele])):
                 input_seq = input_seq + ele + " "
                 
-        #print(input_seq)
-        
     
         tokenized_inputs = torch.tensor(tokenizer.encode(input_seq, add_special_tokens=True)).unsqueeze(0)  # Batch size 1
-        #print('input: ', tokenized_inputs)    
         
-       
         outputs = model(tokenized_inputs)
         predictions = outputs.logits.argmax(dim=-1)
         probs = torch.max(F.softmax(outputs[0], dim=-1), dim=-1)
-        #print(probs[0][0][1])
         
     
         true_pred = predictions[0][1:-1]
         true_probs = probs[0][0][1:-1]
-        #print(true_pred)
+        
         
         tmp = input_seq.split()
         outstr = ''
@@ -188,7 +157,7 @@ def main():
             if true_os>0:
                 true_os='+'+str(true_os)
             prob = true_probs[i].item()
-            #outstr = outstr + '(' + str(true_os) + '  ' + str(prob) + ') '
+            
             outstr = outstr +f'({true_os}:{prob:.2f}) '
         outstr=merge_os(outstr) 
         print("Predicted Oxidation States:\n ", outstr)
@@ -202,26 +171,22 @@ def main():
         for item in formulas:       
             comp = Composition(item)        
             comp_dict = comp.to_reduced_dict
-            #print(comp_dict)
             
             input_seq = ""
             for ele in comp_dict.keys():
                 for count in range(int(comp_dict[ele])):
                     input_seq = input_seq + ele + " "
                     
-            #print(input_seq)
             tokenized_inputs = torch.tensor(tokenizer.encode(input_seq, add_special_tokens=True)).unsqueeze(0)  # Batch size 1
-            #print('input: ', tokenized_inputs)    
+ 
             
             outputs = model(tokenized_inputs)
             predictions = outputs.logits.argmax(dim=-1)
             probs = torch.max(F.softmax(outputs[0], dim=-1), dim=-1)
-            #print(probs[0][0][1])
             
         
             true_pred = predictions[0][1:-1]
             true_probs = probs[0][0][1:-1]
-            #print(true_pred)
             
             tmp = input_seq.split()
             outstr = ''
@@ -231,22 +196,21 @@ def main():
                 if true_os>0:
                     true_os='+'+str(true_os)
                 prob = true_probs[i].item()
-                #outstr = outstr + '(' + str(true_os) + '  ' + str(prob) + ') '
+                
                 outstr = outstr +f'({true_os}:{prob:.2f}) '
             outstr=merge_os(outstr)  
-            # print("Get Oxidation State: ", outstr)
+            
             
             all_outs.append(outstr)
 
         out_df = pd.DataFrame(all_outs)
+        
         #add _OS to the input filename as output file
         outfile='.'.join(args.f.split(".")[0:-1])+"_OS."+args.f.split(".")[-1]
 
         out_df.to_csv(outfile, header=None, index=None)
         print("Output file ------>",f"{outfile} <-- check for the predicted oxidation states")
 
-
-    
         
 if __name__ == "__main__":
     main()

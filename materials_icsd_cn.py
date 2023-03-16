@@ -27,7 +27,7 @@ _CITATION = """
 _DESCRIPTION = """
 """
 
-_ROOT = "/work/nihang/token_classification_ft_occupancy/datasets/ICSD_CN/"
+_ROOT = "./dataset/ICSD_CN/"
 _TRAINING_FILE = "train.txt"
 _DEV_FILE = "validation.txt"
 _TEST_FILE = "test.txt"
@@ -72,21 +72,12 @@ class Materials(datasets.GeneratorBasedBuilder):
                 }
             ),
             supervised_keys=None,
-            homepage="",
+            homepage="https://github.com/usccolumbia/BERTOS.git",
             citation=_CITATION,
         )
 
     def _split_generators(self, dl_manager):
         """Returns SplitGenerators."""
-        
-        '''
-        urls_to_download = {
-            "train": f"{_ROOT}{_TRAINING_FILE}",
-            "dev": f"{_ROOT}{_DEV_FILE}",
-            "test": f"{_ROOT}{_TEST_FILE}",
-        }
-        downloaded_files = dl_manager.download_and_extract(urls_to_download)
-        '''
         
         data_files = {
             "train": os.path.join(_ROOT, _TRAINING_FILE),
@@ -111,8 +102,6 @@ class Materials(datasets.GeneratorBasedBuilder):
 
     def _generate_examples(self, filepath, split):
         """Yields examples."""
-
-        #logger.info("? Generating examples from = %s", filepath)
 
         with open(filepath, encoding="utf-8") as f:
 
