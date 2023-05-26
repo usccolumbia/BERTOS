@@ -113,7 +113,7 @@ def main():
     padding = "max_length" if args.pad_to_max_length else False
     
     # Load model config
-    config = AutoConfig.from_pretrained(args.model_name_or_path, num_labels=15)
+    config = AutoConfig.from_pretrained(args.model_name_or_path, num_labels=14)
    
     # Load model
     model = AutoModelForTokenClassification.from_pretrained(
