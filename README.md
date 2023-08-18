@@ -1,6 +1,9 @@
 # BERTOS
 BERTOS: transformer language model for oxidation state prediction
 
+Citation: Fu, Nihang, Jeffrey Hu, Ying Feng, Gregory Morrison, Hans‐Conrad zur Loye, and Jianjun Hu. "Composition Based Oxidation State Prediction of Materials Using Deep Learning Language Models." Advanced Science (2023): 2301011. [Link](https://onlinelibrary.wiley.com/doi/full/10.1002/advs.202301011)
+
+
 Nihang Fu, Jeffrey Hu, Ying Feng, Jianjun Hu* <br>
 
 Machine Learning and Evolution Laboratory <br>
