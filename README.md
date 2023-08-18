@@ -100,8 +100,7 @@ We use the transformer model as implmented in Huggingface.
 
 ## Cite our work
 ```
-Nihang Fu,†,§ Jeffrey Hu,†,§ Ying Feng,‡ Hanno zur Loye,¶ and Jianjun Hu, Composition based oxidation state prediction of
-materials using deep learning. 2022.
+Fu, Nihang, Jeffrey Hu, Ying Feng, Gregory Morrison, Hans‐Conrad zur Loye, and Jianjun Hu. "Composition Based Oxidation State Prediction of Materials Using Deep Learning Language Models." Advanced Science (2023): 2301011. [PDF](https://arxiv.org/pdf/2211.15895)
 
 ```
 
