@@ -10,7 +10,7 @@ Machine Learning and Evolution Laboratory <br>
 Department of computer science and Engineering <br>
 University of South Carolina
 
-[Online Toolbox]([https://onlinelibrary.wiley.com/doi/full/10.1002/advs.202301011](http://www.materialsatlas.org/bertos)
+[Online Toolbox](http://www.materialsatlas.org/bertos)
 
 ## Table of Contents
 - [Installations](#Installations)
