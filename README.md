@@ -71,16 +71,29 @@ python train_BERTOS.py  --config_name ./random_config   --dataset_name materials
 
 ### Predict
 Run `getOS.py` file to get predicted oxidation states for an input formula or input formulas.csv file containing multiple formulas. <br>
-Using your model:
-```
-python getOS.py --i SrTiO3 --model_name_or_path ./model_icsdcn
-python getOS.py --f formulas.csv --model_name_or_path ./model_icsdcn
-
-```
-Using pretrained model:
+Using default pretrained model (trained on ICSD_CN):
 ```
 python getOS.py --i SrTiO3 --model_name_or_path ./trained_models/ICSD_CN
 python getOS.py --f formulas.csv --model_name_or_path ./trained_models/ICSD_CN
+```
+Or using your model:
+```
+python getOS.py --i SrTiO3 --model_name_or_path ./model_directory
+python getOS.py --f formulas.csv --model_name_or_path ./model_directory
+
+```
+
+### Check charge neutrality for hypothetical formulas
+Run `checkCN.py` file to check charge neutrality for an input formula or input formulas.csv file containing multiple formulas. <br>
+Using default pretrained model (trained on ICSD_CN):
+```
+python checkCN.py --i SrTiO3 
+python checkCN.py --f formulas.csv 
+```
+Or using your model:
+```
+python checkCN.py --i SrTiO3 --model_name_or_path ./model_directory
+python checkCN.py --f formulas.csv --model_name_or_path ./model_directory
 ```
 
 ## Pretrained Models
