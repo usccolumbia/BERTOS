@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bertos"
+version = "0.1.0"
+description = "BERTOS: transformer language model for oxidation state prediction"
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "GPL-3.0" }
+authors = [
+  { name = "Nihang Fu" },
+  { name = "Jianjun Hu" }
+]
+dependencies = [
+  "numpy",
+  "pandas",
+  "scikit-learn",
+  "transformers",
+  "datasets",
+  "torch",
+  "pymatgen"
+]
+
+[project.urls]
+Homepage = "https://github.com/usccolumbia/BERTOS"
+Repository = "https://github.com/usccolumbia/BERTOS"
+
+[project.scripts]
+bertos-get-os = "bertos.getOS:main"
+bertos-check-cn = "bertos.checkCN:main"
+bertos-train = "bertos.train_BERTOS:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["bertos*"]
+
+[tool.setuptools.package-data]
+bertos = [
+  "random_config/*",
+  "tokenizer/*",
+  "trained_models/**/*"
+]
