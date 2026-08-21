@@ -132,4 +132,4 @@ We use the transformer model as implemented in Huggingface.
 ```
 
 # Contact
-If you have any problem using BERTOS, feel free to contact via [funihang@gmail.com](mailto:funihang@gmail.com).
+If you have any problem using BERTOS, feel free to contact via [our email](mailto:funihang@gmail.com).
